@@ -16,24 +16,32 @@ if (!$conn->set_charset("utf8")) {
 
 
 function getTrabajadores(){
+    
     global $conn;
     $query = "SELECT nombre, fecha_alta, fecha_baja, salario, fijo, puesto, id_departamento, id FROM trabajadores";
     
     $result = $conn->query ( $query );
-
+    
     if(isset($result) && $result){
+        echo "<tbody>";
         while ( $row = $result->fetch_assoc () ) {
-            echo "<div class='d-flex flex-row'>
-                <p>".$row['nombre']."</p>
-                <p>".$row['fecha_alta']."</p>
-                <p>".$row['fecha_baja']."</p>
-                <p>".$row['salario']."</p>
-                <p>".$row['fijo']."</p>
-                <p>".$row['puesto']."</p>
-                <p>".$row['id_departamentos']."</p>
-                <p>".$row['id']."</p>
-            </div>";
+            echo "<tr >
+                <td>".$row['nombre']."</td>
+                <td>".$row['fecha_alta']."</td>
+                <td>".$row['fecha_baja']."</td>
+                <td>".$row['salario']."</td>
+                <td>";
+                $retVal = ($row['fijo'] == 1) ? "Sí" : "No" ; 
+                
+            echo $retVal."</td>
+                <td>".$row['puesto']."</td>
+                <td>".$row['id_departamento']."</td>
+                <td>".$row['id']."</td>
+            </tr>";
           }
+          echo "</tbody>";
+    }else{
+        echo $conn->error;
     }
 }
 function getClientes(){
