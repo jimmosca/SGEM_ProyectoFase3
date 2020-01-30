@@ -4,18 +4,12 @@ session_start();
 
 <?php
 
-include 'conexion.php';
-
-$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-
-if ($conexion->connect_error) {
- die("La conexion falló: " . $conexion->connect_error);
-}
+include 'bbdd.php';
 
 $username = $_POST['username'];
 $password = $_POST['password'];
  
-$sql = "SELECT * FROM $tbl_name WHERE nombre_usuario = '$username'";
+$sql = "SELECT * FROM usuarios WHERE usuario = '$username'";
 
 
 $result = $conexion->query($sql);
@@ -36,7 +30,8 @@ if ($password==$row['password']) {
 
     echo "Bienvenido! " . $_SESSION['username'];
     echo "<br><br><a href=panel-control.php>Panel de Control</a>"; 
-    header('Location: http://localhost/login/panel-control.php');//redirecciona a la pagina del usuario
+    //TODOOO: REDIRECCIONAR A LA PAGINA PRINCIPAL
+    //header('Location: http://localhost/login/panel-control.php');//redirecciona a la pagina del usuario
 
  } else { 
    echo "Username o Password estan incorrectos.";
