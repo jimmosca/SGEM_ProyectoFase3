@@ -163,6 +163,18 @@ CREATE TABLE `trabajadores` (
   `id_departamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
+  `usuario` varchar(16) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(16) COLLATE utf8_spanish_ci NOT NULL,
+  `id_trabajador` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
 --
 -- Índices para tablas volcadas
 --
@@ -228,6 +240,13 @@ ALTER TABLE `sueldos`
 ALTER TABLE `trabajadores`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_departamento` (`id_departamento`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`usuario`),
+  ADD KEY `id_trabajador` (`id_trabajador`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -328,6 +347,13 @@ ALTER TABLE `sueldos`
 --
 ALTER TABLE `trabajadores`
   ADD CONSTRAINT `trabajadores_ibfk_1` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`);
+
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_trabajador`) REFERENCES `trabajadores` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
