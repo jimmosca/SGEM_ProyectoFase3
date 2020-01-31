@@ -25,7 +25,7 @@
     ?>
     <form class="" action="gastos.php" method="post">
       <input type="hidden" name="expenses_form" value="true">
-      <label for="date">Fechab operación:</label><br>
+      <label for="date">Fecha operación:</label><br>
       <input type="date" id="date" name="date" value="<?php echo $date; ?>"><br>
       <label for="name">Nombre de gasto:</label><br>
       <input type="text" id="name" name="name"/><br>
