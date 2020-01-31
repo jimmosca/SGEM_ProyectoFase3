@@ -33,7 +33,7 @@
           $query = "SELECT id, Tipo from reservas";
           $result = $conn->query($query);
           if(isset($result) && $result){
-              while ( $row = $result->fetch_assoc () ) {
+              while ( $row = $result->fetch_assoc()) {
                   echo "<option value='".$row["id"]."'>".$row["id"]." | ".$row["Tipo"]."</option>";
                 }
           }
