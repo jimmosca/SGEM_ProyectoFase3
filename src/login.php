@@ -25,12 +25,6 @@ require "navBar.php";
         <input type="checkbox" checked="checked" name="remember"> Recordarme
       </label>
     </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-
-      <button type="button" onclick="location.href='index.html'">Registrarse</button>
-      <span class="psw">Olvidé <a href="#">contraseña</a></span>
-    </div>
   </form>
 </div>
 

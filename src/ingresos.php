@@ -4,6 +4,10 @@ require "arriba.php";
 inicioPag("Ingresos");
 require "navBar.php";
 
+if(!isset($_SESSION['loggedin'])){
+   header('location: ./login.php');
+}
+
 ?>
 <div class='container mt-5 pt-3'>
  <table class='text-center table table-striped table-bordered'>

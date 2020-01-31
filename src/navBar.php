@@ -9,14 +9,9 @@
       <ul class="navbar-nav ml-auto">
 
         <?php
-        if (isset($_GET["sesion"]) && $_GET["sesion"]=="cerrada") {
-          session_unset();
-        }
+        
          if (isset($_SESSION["loggedin"]) && $_SESSION['loggedin']) {
-          echo "<li class='nav-item'><a class='nav-link' href='Catalogo.php'>Productos</a></li>";
-          echo "<li class='nav-item'><a class='nav-link' href='CarritoCompra.php'>Carrito de la Compra</a></li>";
-          echo "<li class='nav-item'><a class='nav-link' href='cerrarSesion.php'>Cerrar sesion</a></li>";
-          
+          echo "<li class='nav-item'><a class='nav-link' href='cerrarSesion.php'>Cerrar Sesion</a></li>";
         }else{
           echo "<li class='nav-item'><a class='nav-link' href='login.php'>Inicio Sesion</a></li>";
           

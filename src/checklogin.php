@@ -12,7 +12,7 @@ $password = $_POST['password'];
 $sql = "SELECT * FROM usuarios WHERE usuario = '$username'";
 
 
-$result = $conexion->query($sql);
+$result = $conn->query($sql);
 
 
 if ($result->num_rows > 0) {     }
@@ -28,15 +28,12 @@ if ($password==$row['password']) {
     $_SESSION['start'] = time();
     $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
 
-    echo "Bienvenido! " . $_SESSION['username'];
-    echo "<br><br><a href=panel-control.php>Panel de Control</a>"; 
-    //TODOOO: REDIRECCIONAR A LA PAGINA PRINCIPAL
-    //header('Location: http://localhost/login/panel-control.php');//redirecciona a la pagina del usuario
+    
+    header('Location: ./modulos.php');
 
  } else { 
-   echo "Username o Password estan incorrectos.";
-
-   echo "<br><a href='login.html'>Volver a Intentarlo</a>";
+  header('Location: ./login.php');
  }
- mysqli_close($conexion); 
+ mysqli_close($conn); 
+ die();
  ?>

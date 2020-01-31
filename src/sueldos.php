@@ -3,6 +3,9 @@
 require "arriba.php";
 inicioPag("Sueldos");
 require "navBar.php";
+if(!isset($_SESSION['loggedin'])){
+   header('location: ./login.php');
+}
 
 ?>
 <div class='container mt-5 pt-3'>
