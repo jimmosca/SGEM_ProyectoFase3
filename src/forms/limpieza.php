@@ -1,5 +1,5 @@
 <?php
-  require '../bbdd.php';
+  // require 'bbdd.php';
   if(isset($_POST["limpieza_form"])){
     $date = $_POST["date"];
     $habitacion = $_POST["habitacion"];
@@ -7,7 +7,7 @@
     $preferences = $_POST["observaciones"];
     $sql = "INSERT INTO limpiezas(fecha, observaciones, id_habitacion, id_trabajador) VALUES('$date', '$preferences', '$habitacion', '$trabajador')";
     $result = mysqli_query($conn, $sql);
-    header("Location: limpieza.php?msg=Añadido_Con_Exito");
+    header("Location: limpiezas.php?msg=Añadido_Con_Exito");
   }
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
         echo "<p style='color:blue'>".$_GET["msg"]."</p>";
       }
     ?>
-    <form class="forms" action="limpieza.php" method="post">
+    <form class="forms" action="limpiezas.php" method="post">
       <input type="hidden" name="limpieza_form" value="true">
       <label for="date">Fecha operación:</label><br>
       <input type="date" id="date" name="date" value="<?php echo date("Y-m-d"); ?>"><br>
@@ -51,7 +51,7 @@
         ?>
       </select><br>
       <label for="observaciones">Observaciones:</label><br>
-      <textarea name="observaciones" id="observaciones" rows="8" cols="80"></textarea>
+      <textarea name="observaciones" id="observaciones" rows="8" cols="25"></textarea>
       <br><input type="submit" value="Send">
     </form>
   </body>

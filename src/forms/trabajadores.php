@@ -1,5 +1,5 @@
 <?php
-  require '../bbdd.php';
+  // require '../bbdd.php';
   if(isset($_POST["trabajadores_form"])){
     $alta = $_POST["alta"];
     $baja = $_POST["baja"];

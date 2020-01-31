@@ -1,7 +1,7 @@
 <?php
   $date =  date("Y-m-d");
   if(isset($_POST["clients_form"])){
-    require '../bbdd.php';
+    // require '../bbdd.php';
     $name = $_POST["name"];
     $preferences = $_POST["preferences"];
     $sql = "INSERT INTO clientes(fecha_registro, nombre, preferencias) VALUES('$date', '$name', '$preferences')";
@@ -28,7 +28,7 @@
       <label for="date">Fecha de registro:</label><br>
       <input type="date" id="date" name="date" value="<?php echo $date; ?>"/><br>
       <label for="preferences">Preferencias:</label><br>
-      <textarea name="preferences" id="preferences" rows="8" cols="80"></textarea>
+      <textarea name="preferences" id="preferences" rows="8" cols="20"></textarea>
       <br><input type="submit" value="Añadir"/>
     </form>
   </body>

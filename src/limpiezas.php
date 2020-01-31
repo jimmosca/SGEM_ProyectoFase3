@@ -20,10 +20,14 @@ if(!isset($_SESSION['loggedin'])){
     <th class='font-weight-bold'>ID</th>
  </tr>
  </thead>
- <?php 
+ <?php
  getDatos('limpiezas');
  ?>
 </table>
 </div>
 
+<div style="width:350px;margin:auto;text-align:center;border:1px solid black;">
+  <p>Nuevo servicio:</p>
+  <?php include 'forms/limpieza.php'; ?>
+</div>
 <?php require 'abajo.php'; ?>

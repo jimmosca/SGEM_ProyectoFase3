@@ -1,5 +1,5 @@
 <?php
-  require '../bbdd.php';
+  // require '../bbdd.php';
   if(isset($_POST["reservas_form"])){
     $tipo = $_POST["tipo"];
     $noches = $_POST["noches"];

@@ -1,5 +1,5 @@
 <?php
-  require '../bbdd.php';
+  // require '../bbdd.php';
   if (isset($_POST["sueldos_form"])) {
     $fecha = $_POST["fecha"];
     $cantidad = $_POST["cantidad"];

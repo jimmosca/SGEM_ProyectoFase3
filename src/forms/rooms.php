@@ -1,6 +1,6 @@
 <?php
   if(isset($_POST["rooms_form"])){
-    require '../bbdd.php';
+    // require '../bbdd.php';
     $cama = $_POST["tipo-cama"];
     $number = $_POST["number"];
     $personas =  $_POST["personas"];
@@ -17,7 +17,7 @@
     }
     $sql = "INSERT INTO habitaciones(cama_matrimonio, cama_individual, numero, precio_base, ultima_limpieza, personas) VALUES('$cama_matrimonio', '$cama_individual', '$number', '$price', '$ultimaLimpieza', '$personas')";
     $result = mysqli_query($conn, $sql);
-    header("Location: rooms.php?msg=Añadido_Con_Exito");
+    header("Location: habitaciones.php?msg=Añadido_Con_Exito");
   }
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@
         echo "<p style='color:blue'>".$_GET["msg"]."</p>";
       }
     ?>
-    <form class="forms" action="rooms.php" method="post">
+    <form class="forms" action="habitaciones.php" method="post">
       <input type="hidden" name="rooms_form" value="true">
       <label>Tipo de cama:</label><br>
       <input type="radio" name="tipo-cama" value="matrimonio" checked/>Cama de matrimonio<br/>

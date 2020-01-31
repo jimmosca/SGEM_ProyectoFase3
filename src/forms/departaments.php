@@ -4,7 +4,7 @@
     $name = $_POST["departament"];
     $sql = "INSERT INTO departamentos(nombre) VALUES('$name')";
     $result = mysqli_query($conn, $sql);
-    header("Location: departaments.php?msg=Añadido_Con_Exito");
+    header("Location: ../departamentos.php?msg=Añadido_Con_Exito");
   }
 ?>
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
       <h2>Departamentos</h2>
       <ul>
         <?php
-          require '../bbdd.php';
+          // require '../bbdd.php';
           $query = "SELECT nombre, id FROM departamentos";
           $result = $conn->query($query);
           if(isset($result) && $result){
@@ -54,7 +54,7 @@
             }
           }
         ?>
-        <form class="forms" action="departaments.php" method="post">
+        <form class="forms" action="forms/departaments.php" method="post">
           <input type="hidden" name="departaments_form" value="true">
           <li><input type="text" name="departament" placeholder="Añadir departamento"/><input type="submit" value="Add"/></li>
         </form>

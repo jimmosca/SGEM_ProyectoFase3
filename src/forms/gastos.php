@@ -1,6 +1,6 @@
 <?php
   $date =  date("Y-m-d");
-  require '../bbdd.php';
+  // require 'bbdd.php';
   if(isset($_POST["expenses_form"])){
     $name = $_POST["name"];
     $price = $_POST["price"];
@@ -44,7 +44,7 @@
         ?>
       </select><br>
       <label for="preferences">Observaciones:</label><br>
-      <textarea name="preferences" id="preferences" rows="8" cols="80"></textarea><br>
+      <textarea name="preferences" id="preferences" rows="8" cols="30"></textarea><br>
       <input type="submit" value="Send">
     </form>
   </body>
