@@ -2,8 +2,8 @@
   $date =  date("Y-m-d");
   require '../bbdd.php';
   if(isset($_POST["expenses_form"])){
-    $name = $_POST["departament"];
-    $price = $_post["price"];
+    $name = $_POST["name"];
+    $price = $_POST["price"];
     $preferences = $_POST["preferences"];
     $departament = $_POST["departament"];
     $sql = "INSERT INTO gastos(fecha_operacion, nombre, precio, observaciones, id_departamento) VALUES('$date', '$name', '$price', '$preferences', '$departament')";
