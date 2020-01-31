@@ -30,7 +30,7 @@
       <label for="name">Nombre de gasto:</label><br>
       <input type="text" id="name" name="name"/><br>
       <label for="price">Precio:</label><br>
-      <input type="number" name="price"/><br>
+      <input type="number" name="price" step="any"/><br>
       <label for="departementId">Departamento al que pertenece:</label><br>
       <select id="departamentId" name="departament">
         <?php
