@@ -264,6 +264,12 @@ ALTER TABLE `usuarios`
   ADD KEY `id_trabajador` (`id_trabajador`);
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`usuario`, `password`, `id_trabajador`) VALUES ('root', '1234', '1'), ('root0', '1234', '2');
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
