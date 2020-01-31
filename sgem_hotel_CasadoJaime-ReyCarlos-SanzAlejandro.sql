@@ -148,7 +148,7 @@ CREATE TABLE `sueldos` (
   `id` int(11) NOT NULL,
   `fecha_operacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `cantidad` double NOT NULL,
-  `paga_extra` tinyint(1) NOT NULL,
+  `paga_extra` set('Si','No') COLLATE utf8_spanish_ci NOT NULL,
   `id_trabajador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
