@@ -1,7 +1,7 @@
 <?php
 
 require "arriba.php";
-inicioPag("Trabajadores");
+inicioPag("Gastos");
 require "navBar.php";
 
 if(!isset($_SESSION['loggedin'])){
@@ -14,17 +14,15 @@ if(!isset($_SESSION['loggedin'])){
  <thead class='thead-dark'>
  <tr>
     <th class='font-weight-bold'>Nombre</th>
-    <th class='font-weight-bold'>Fecha Alta</th>
-    <th class='font-weight-bold'>Fecha Baja</th>
-    <th class='font-weight-bold'>Salario</th>
-    <th class='font-weight-bold'>Fijo</th>
-    <th class='font-weight-bold'>Puesto</th>
+    <th class='font-weight-bold'>Fecha Operacion</th>
+    <th class='font-weight-bold'>Precio</th>
+    <th class='font-weight-bold'>Observaciones</th>
     <th class='font-weight-bold'>Departamento</th>
     <th class='font-weight-bold'>ID</th>
  </tr>
  </thead>
  <?php 
- getDatos('trabajadores');
+ getDatos('gastos');
  ?>
 </table>
 </div>

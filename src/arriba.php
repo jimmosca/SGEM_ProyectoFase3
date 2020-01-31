@@ -18,4 +18,5 @@ function inicioPag($title){
   }
   require "bbdd.php";
   session_start();
+  
 ?>
