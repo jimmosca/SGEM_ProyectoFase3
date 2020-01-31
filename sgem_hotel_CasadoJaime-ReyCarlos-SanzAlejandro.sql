@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2019 a las 19:57:16
+-- Tiempo de generación: 31-01-2020 a las 12:42:27
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -31,7 +31,6 @@ USE `sgem_hotel`;
 -- Estructura de tabla para la tabla `clientes`
 --
 
-DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
   `id` int(11) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -39,17 +38,31 @@ CREATE TABLE `clientes` (
   `preferencias` varchar(256) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `fecha_registro`, `nombre`, `preferencias`) VALUES
+(1, '2020-01-31 09:17:49', 'Alfredo CanelA', 'Mucho papel higienico, ya que suele loorar en cantidades industriales');
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `departamentos`
 --
 
-DROP TABLE IF EXISTS `departamentos`;
 CREATE TABLE `departamentos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(32) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `departamentos`
+--
+
+INSERT INTO `departamentos` (`id`, `nombre`) VALUES
+(1, 'Recepcion'),
+(2, 'Administracion');
 
 -- --------------------------------------------------------
 
@@ -57,7 +70,6 @@ CREATE TABLE `departamentos` (
 -- Estructura de tabla para la tabla `gastos`
 --
 
-DROP TABLE IF EXISTS `gastos`;
 CREATE TABLE `gastos` (
   `id` int(11) NOT NULL,
   `fecha_operacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -73,7 +85,6 @@ CREATE TABLE `gastos` (
 -- Estructura de tabla para la tabla `habitaciones`
 --
 
-DROP TABLE IF EXISTS `habitaciones`;
 CREATE TABLE `habitaciones` (
   `id` int(11) NOT NULL,
   `cama_matrimonio` int(11) NOT NULL,
@@ -90,7 +101,6 @@ CREATE TABLE `habitaciones` (
 -- Estructura de tabla para la tabla `ingresos`
 --
 
-DROP TABLE IF EXISTS `ingresos`;
 CREATE TABLE `ingresos` (
   `id` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -104,7 +114,6 @@ CREATE TABLE `ingresos` (
 -- Estructura de tabla para la tabla `limpiezas`
 --
 
-DROP TABLE IF EXISTS `limpiezas`;
 CREATE TABLE `limpiezas` (
   `id` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -119,7 +128,6 @@ CREATE TABLE `limpiezas` (
 -- Estructura de tabla para la tabla `reservas`
 --
 
-DROP TABLE IF EXISTS `reservas`;
 CREATE TABLE `reservas` (
   `id` int(11) NOT NULL,
   `Tipo` varchar(32) COLLATE utf8_spanish_ci NOT NULL,
@@ -136,7 +144,6 @@ CREATE TABLE `reservas` (
 -- Estructura de tabla para la tabla `sueldos`
 --
 
-DROP TABLE IF EXISTS `sueldos`;
 CREATE TABLE `sueldos` (
   `id` int(11) NOT NULL,
   `fecha_operacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -151,24 +158,32 @@ CREATE TABLE `sueldos` (
 -- Estructura de tabla para la tabla `trabajadores`
 --
 
-DROP TABLE IF EXISTS `trabajadores`;
 CREATE TABLE `trabajadores` (
   `id` int(11) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `fecha_baja` timestamp NULL DEFAULT NULL,
   `salario` double NOT NULL,
   `nombre` varchar(64) COLLATE utf8_spanish_ci NOT NULL,
-  `fijo` tinyint(1) NOT NULL,
+  `fijo` enum('Si','No') COLLATE utf8_spanish_ci NOT NULL,
   `puesto` varchar(64) COLLATE utf8_spanish_ci NOT NULL,
   `id_departamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `trabajadores`
+--
+
+INSERT INTO `trabajadores` (`id`, `fecha_alta`, `fecha_baja`, `salario`, `nombre`, `fijo`, `puesto`, `id_departamento`) VALUES
+(1, '2020-01-31 11:35:23', NULL, 2500, 'Pablo Mendi', 'Si', 'Gerente', 2),
+(2, '2020-01-31 11:35:23', NULL, 1000, 'Diego Valberdi', 'No', 'Botones', 1),
+(3, '2020-01-31 11:37:00', '2020-02-04 08:00:00', 450, 'Carlos Casado', 'No', 'Ayudante Limpieza', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `usuarios`
 --
-DROP TABLE IF EXISTS `usuarios`;
+
 CREATE TABLE `usuarios` (
   `usuario` varchar(16) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(16) COLLATE utf8_spanish_ci NOT NULL,
@@ -256,13 +271,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `gastos`
@@ -304,7 +319,7 @@ ALTER TABLE `sueldos`
 -- AUTO_INCREMENT de la tabla `trabajadores`
 --
 ALTER TABLE `trabajadores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -347,7 +362,6 @@ ALTER TABLE `sueldos`
 --
 ALTER TABLE `trabajadores`
   ADD CONSTRAINT `trabajadores_ibfk_1` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`);
-
 
 --
 -- Filtros para la tabla `usuarios`
